@@ -1,7 +1,8 @@
 require("dotenv").config();
 
 const express = require("express");
-const routes = require("./routes/workouts");
+const WorkoutRoutes = require("./routes/workouts");
+const userRoutes = require("./routes/user");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -26,6 +27,7 @@ mongoose
   });
 
 // routes, parent of all routes
-app.use("/api/workouts", routes);
+app.use("/api/workouts", WorkoutRoutes);
+app.use("/api/user", userRoutes);
 
 
