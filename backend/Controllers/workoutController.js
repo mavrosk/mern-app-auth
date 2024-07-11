@@ -2,7 +2,8 @@
 const Workout = require('../models/workoutModel')
 const mongoose = require('mongoose')
 const fs = require('fs');
-const transporter = require('nodemailer').createTransport
+const transporter = require('nodemailer').createTransport;
+const { sendEmail } = require('./emailService');
 
 
 // Get all workouts
@@ -10,6 +11,28 @@ const getWorkouts = async (req, res) => {
   const workouts = await Workout.find({}).sort({createdAt: -1});
 
   res.status(200).json(workouts)
+}
+
+// Send email 
+
+const SendEmail = async (req, res) => {
+  const { email } = req.body;
+    try {
+      await client.connect();
+      const database = client.db('');
+      const collection = database.collection('');
+  
+      const documents = await collection.find().toArray();
+      const documentsString = JSON.stringify(documents, null, 2);
+  
+      await sendEmail(email, '', documentsString);
+      res.status(200).send('');
+    } catch (error) {
+      console.error('', error);
+      res.status(500).send('');
+    } finally {
+      await client.close();
+    }
 }
 
 
