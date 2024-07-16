@@ -3,7 +3,7 @@ const Workout = require('../models/workoutModel')
 const mongoose = require('mongoose')
 const fs = require('fs');
 const transporter = require('nodemailer').createTransport;
-const { sendEmail } = require('./emailService');
+const { sendEmail } = require('../Utils/emailService.js');
 
 
 // Get all workouts
@@ -15,7 +15,7 @@ const getWorkouts = async (req, res) => {
 
 // Send email 
 
-const SendEmail = async (req, res) => {
+const SendEmailToUser = async (req, res) => {
   const { email } = req.body;
     try {
       await client.connect();
