@@ -28,7 +28,6 @@ const signupUser = async (req, res) => {
     
     try {
         const user = User.signup(email, password)
-
         const token = createjwttoken(user._id)
 
         res.status(200).json({email, token})
