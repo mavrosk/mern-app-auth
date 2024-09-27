@@ -12,13 +12,13 @@ const userSchema = new Schema({
         unique:true
     },
     password : {
-        type: Number,
+        type: String,
         required: true
     }
 })
 
 
-userSchema.statics.signup = async(email, password) => {
+userSchema.statics.signup = async function(email, password){
 
     if (!email || !password) {
         throw Error('Please fill all the fields')
@@ -44,7 +44,7 @@ userSchema.statics.signup = async(email, password) => {
 }
 
 
-userSchema.statics.login = async(email, password) => {
+userSchema.statics.login = async function(email, password){
 
     if (!email || !password) {
         throw Error('Please fill all the fields')

@@ -18,6 +18,9 @@ export const UserContextProvider = ({ children }) => {
         user: null
     });
 
+    console.log("UserContext state:", state);
+    
+
     return (
         <UserContext.Provider value={{ ...state, dispatch }}>
             {children}
