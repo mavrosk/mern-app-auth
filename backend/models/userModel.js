@@ -28,9 +28,9 @@ userSchema.statics.signup = async(email, password) => {
         throw Error('Please fill all the fields')
     }
 
-    if (!validator.isStrongPassword(password)) {
-        throw Error('Please rewrite a more secure password')
-    }
+    // if (!validator.isStrongPassword(password)) {
+    //     throw Error('Please rewrite a more secure password')
+    // }
 
     const exists = await this.findOne({email})
 
